@@ -8,11 +8,15 @@
 
 .current__location {
     font-size: 2rem;
+    margin: 1rem 0;
 }
 
 .current__main-info {
     display: grid;
     grid-template-columns: auto auto;
+    padding: 1rem;
+    background: rgba(255, 255, 255, .1);
+    border-radius: 20px;
 }
 
 .current__icon {
@@ -30,9 +34,17 @@
     font-size: 1.5rem;
 }
 
+.current__description {
+    grid-column: 1 / 3;
+    text-align: center;
+}
+
 .current__secondary-info {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin-top: 1rem;
 }
 
 .secondary-icon {
@@ -42,10 +54,10 @@
 .secondary-tile {
     display: grid;
     grid-template-columns: auto auto;
-    margin: 1rem;
     padding: 1rem;
     border-radius: 20px;
-    border: 2px solid white;
+    background: rgba(255, 255, 255, .1);
+    
 }
 
 .secondary-tile__title {

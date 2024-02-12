@@ -1,8 +1,8 @@
 import './Background.css'
 
-const Background = () => {
+const Background = ({backgroundGradient}) => {
   return (
-    <div className='background'></div>
+    <div className={`background ${backgroundGradient}`}></div>
   )
 }
 

@@ -57,6 +57,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
                 <span className="current__feel">
                     S.T.: {Math.round(currentWeatherData.main.feels_like)}°C
                 </span>
+                <span className="current__description">{currentWeatherData.weather[0].description}</span>
             </div>
             <div className="current__secondary-info">
                 <div className="secondary-tile current__humidity">

@@ -13,7 +13,7 @@ const SearchBar = ({ fetchWeather }) => {
     useEffect(() => {
         const getData = async () => {
             const response = await fetch(
-                `http://api.openweathermap.org/geo/1.0/direct?q=${debounceValue}&limit=10&appid=${APIKEY}`
+                `https://api.openweathermap.org/geo/1.0/direct?q=${debounceValue}&limit=10&appid=${APIKEY}`
             );
             const data = await response.json();
             console.log("fetching data...");
