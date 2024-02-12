@@ -1,0 +1,54 @@
+.current-weather {
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.current__location {
+    font-size: 2rem;
+}
+
+.current__main-info {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.current__icon {
+    grid-row: 1 / 3;
+    width: 200px;
+}
+
+.current__temperature {
+    font-size: 3rem;
+    align-self: flex-end;
+    font-weight: bold;
+}
+
+.current__feel {
+    font-size: 1.5rem;
+}
+
+.current__secondary-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.secondary-icon {
+    width: 25px;
+}
+
+.secondary-tile {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 2px solid white;
+}
+
+.secondary-tile__title {
+    margin: .5rem 0;
+    grid-column: 1 / 3;
+}
