@@ -1,14 +1,23 @@
 import "./SearchBar.css";
 import search_icon from "../../assets/icons/search.svg";
-import { useEffect, useState } from "react";
-import { useDebounce } from "../../hooks/useDebounce";
-import { APIKEY } from "../../keys/apikey";
+import {useEffect, useState} from "react";
+import {useDebounce} from "../../hooks/useDebounce";
+import {APIKEY} from "../../keys/apikey";
+import {motion} from "framer-motion";
 
-const SearchBar = ({ fetchWeather }) => {
+const liVariants = {
+    hidden: {
+        y: -10,
+    },
+    visible: {
+        y: 0,
+    }
+};
+
+const SearchBar = ({fetchWeather}) => {
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
     const debounceValue = useDebounce(search, 250);
-
 
     useEffect(() => {
         const getData = async () => {
@@ -23,13 +32,13 @@ const SearchBar = ({ fetchWeather }) => {
     }, [debounceValue]);
 
     const clearInput = () => {
-        setSearch('')
-    }
+        setSearch("");
+    };
 
     const handleClick = (data) => {
         clearInput();
         fetchWeather(data);
-    }
+    };
 
     return (
         <div>
@@ -38,20 +47,26 @@ const SearchBar = ({ fetchWeather }) => {
                 <input
                     className="search-input"
                     type="text"
-                    placeholder="Type to search..."
+                    placeholder="Escribe un lugar..."
                     value={search}
                     onChange={(e) => {
                         setSearch(e.target.value);
                     }}
                 />
             </div>
-            <ul className="results-container">
-            {
-                results.map((el) => (
-                    <li className="result" onClick={() => handleClick(el)}>{`${el.name}, ${el.country}`}</li>
-                ))
-            }
-        </ul>
+                <ul
+                    className="results-container">
+                    {results.map((el) => (
+                        <motion.li
+                        variants={liVariants}
+                    initial="hidden"
+                    animate="visible"
+                            className="result"
+                            onClick={() =>
+                                handleClick(el)
+                            }>{`${el.name}, ${el.country}`}</motion.li>
+                    ))}
+                </ul>
         </div>
     );
 };

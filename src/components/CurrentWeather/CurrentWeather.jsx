@@ -24,6 +24,17 @@ import wind_icon from "../../assets/icons/wind.svg";
 import visibility_icon from "../../assets/icons/visibility.svg";
 import sunrise_icon from "../../assets/icons/sunrise.svg";
 
+import {motion} from "framer-motion";
+
+const currentWeatherVariants = {
+    hidden: {
+        y: -50,
+    },
+    visible: {
+        y: 0,
+    },
+};
+
 const iconPaths = {
     "01d": _01d,
     "01n": _01n,
@@ -56,7 +67,11 @@ const CurrentWeather = ({currentWeatherData}) => {
     };
 
     return (
-        <div className="current-weather">
+        <motion.div
+            variants={currentWeatherVariants}
+            initial="hidden"
+            animate="visible"
+            className="current-weather">
             <h2 className="current__location">{currentWeatherData.name}</h2>
             <div className="current__main-info">
                 <span className="current__temperature">
@@ -126,7 +141,7 @@ const CurrentWeather = ({currentWeatherData}) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
