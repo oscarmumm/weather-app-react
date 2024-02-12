@@ -22,6 +22,7 @@ import pressure_icon from "../../assets/icons/pressure.svg";
 import humidity_icon from "../../assets/icons/humidity.svg";
 import wind_icon from "../../assets/icons/wind.svg";
 import visibility_icon from "../../assets/icons/visibility.svg";
+import sunrise_icon from "../../assets/icons/sunrise.svg";
 
 const iconPaths = {
     "01d": _01d,
@@ -44,20 +45,30 @@ const iconPaths = {
     "50n": _50n,
 };
 
-const CurrentWeather = ({ currentWeatherData }) => {
+const CurrentWeather = ({currentWeatherData}) => {
     let iconSrc = iconPaths[currentWeatherData.weather[0].icon];
+
+    const timestampConverter = (timestamp) => {
+        let date = new Date(timestamp * 1000);
+        let hs = date.getHours();
+        let min = date.getMinutes();
+        return `${hs}:${min}`;
+    };
+
     return (
         <div className="current-weather">
             <h2 className="current__location">{currentWeatherData.name}</h2>
             <div className="current__main-info">
-                <img className="current__icon" src={iconSrc} alt="" />
                 <span className="current__temperature">
                     {Math.round(currentWeatherData.main.temp)}°C
                 </span>
+                <img className="current__icon" src={iconSrc} alt="" />
                 <span className="current__feel">
                     S.T.: {Math.round(currentWeatherData.main.feels_like)}°C
                 </span>
-                <span className="current__description">{currentWeatherData.weather[0].description}</span>
+                <span className="current__description">
+                    {currentWeatherData.weather[0].description}
+                </span>
             </div>
             <div className="current__secondary-info">
                 <div className="secondary-tile current__humidity">
@@ -95,6 +106,24 @@ const CurrentWeather = ({ currentWeatherData }) => {
                             currentWeatherData.wind.speed * 3.6
                         )} Km/h`}
                     </span>
+                </div>
+                <div className="secondary-tile sunset-sunrise">
+                    <span className="sunset-sunrise__title">
+                        Salida y puesta del sol
+                    </span>
+                    <div className="sunrise">
+                        <span>Salida del sol</span>
+                        <span>
+                            {timestampConverter(currentWeatherData.sys.sunrise)}
+                        </span>
+                    </div>
+                    <img className="sunrise-icon" src={sunrise_icon} alt="" />
+                    <div className="sunset">
+                        <span>Puesta del sol</span>
+                        <span>
+                            {timestampConverter(currentWeatherData.sys.sunset)}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

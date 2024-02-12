@@ -9,24 +9,25 @@
 .current__location {
     font-size: 2rem;
     margin: 1rem 0;
+    width: 100%;
+    text-align: left;
 }
 
 .current__main-info {
     display: grid;
     grid-template-columns: auto auto;
     padding: 1rem;
-    background: rgba(255, 255, 255, .1);
+    /* background: rgba(255, 255, 255, .1); */
     border-radius: 20px;
 }
 
 .current__icon {
-    grid-row: 1 / 3;
     width: 200px;
 }
 
 .current__temperature {
     font-size: 3rem;
-    align-self: flex-end;
+    align-self: flex-start;
     font-weight: bold;
 }
 
@@ -35,7 +36,6 @@
 }
 
 .current__description {
-    grid-column: 1 / 3;
     text-align: center;
 }
 
@@ -63,4 +63,33 @@
 .secondary-tile__title {
     margin: .5rem 0;
     grid-column: 1 / 3;
+}
+
+.sunset-sunrise {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.sunset-sunrise__title {
+    grid-column: 1 / 4;
+    margin-bottom: 1rem;
+}
+
+.sunrise, .sunset {
+    display: flex;
+    flex-direction: column;
+}
+
+.sunrise {
+    align-items: flex-start;
+}
+
+.sunset {
+    align-items: flex-end;
+}
+
+.sunrise-icon {
+    margin: auto;
+    width: 25px;
 }

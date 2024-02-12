@@ -7,7 +7,7 @@ import { APIKEY } from "../../keys/apikey";
 const SearchBar = ({ fetchWeather }) => {
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
-    const debounceValue = useDebounce(search, 500);
+    const debounceValue = useDebounce(search, 250);
 
 
     useEffect(() => {
