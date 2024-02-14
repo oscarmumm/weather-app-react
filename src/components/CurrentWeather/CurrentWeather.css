@@ -19,8 +19,8 @@
 }
 
 .current__main-info {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto auto;
     padding: 1rem;
     /* background: rgba(255, 255, 255, .1); */
     border-radius: 20px;
@@ -29,10 +29,12 @@
 }
 
 .current__icon {
-    width: 300px;
-    position: absolute;
-    top: 0;
-    right: -50px;
+    width: 150px;
+    grid-row: 1/4;
+    grid-column: 2/3;
+    align-self:auto;
+    justify-self: end;
+    
 }
 
 .current__temperature {
@@ -57,19 +59,22 @@
 }
 
 .secondary-icon {
-    width: 25px;
+    width: 35px;
 }
 
 .secondary-tile {
     display: grid;
     grid-template-columns: auto auto;
     padding: 1rem;
+    font-weight: bold;
     border-radius: 20px;
     background: rgba(255, 255, 255, .1);
+    font-size: 1.1rem;
     
 }
 
 .secondary-tile__title {
+    font-size: 1.2rem;
     margin-bottom: .5rem;
     grid-column: 1 / 3;
 }
@@ -100,5 +105,5 @@
 
 .sunrise-icon {
     margin: auto;
-    width: 25px;
+    width: 35px;
 }
