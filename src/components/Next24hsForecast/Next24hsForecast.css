@@ -1,0 +1,7 @@
+.next-24hs-forecast {
+    display: flex;
+    overflow: auto;
+    margin: 1rem 0;
+    padding: 1rem .0;
+    position: relative;
+}

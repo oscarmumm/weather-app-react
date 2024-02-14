@@ -1,3 +1,15 @@
 .weather {
     margin-top: 100px;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.weather-24hs-forecast-title {
+    color: var(--white);
+    padding: 1rem;
+}
+
+.weather-details {
+    background: rgba(0, 0, 0, .3);
+
 }
