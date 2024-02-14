@@ -43,9 +43,9 @@ const ForecastTile = ({forecast}) => {
     let iconSrc = iconPaths[forecast.weather[0].icon]
   return (
     <div className='forecast-tile'>
-        <span className='forecast-tile__hs'>{forecast.dt_txt.slice(10, 16)}</span>
-        <img className='forecast-tile__icon' src={iconSrc} alt="" />
         <span className='forecast-tile__temp'>{Math.round(forecast.main.temp)}°C</span>
+        <img className='forecast-tile__icon' src={iconSrc} alt="" />
+        <span className='forecast-tile__hs'>{forecast.dt_txt.slice(10, 16)}</span>
     </div>
   )
 }

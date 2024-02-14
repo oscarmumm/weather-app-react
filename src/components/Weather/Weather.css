@@ -7,9 +7,16 @@
 .weather-24hs-forecast-title {
     color: var(--white);
     padding: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 .weather-details {
     background: rgba(0, 0, 0, .3);
 
+}
+
+.temperature-icon {
+    width: 25px;
+    margin-right: 1rem;
 }
