@@ -1,4 +1,4 @@
-import './ForecastTile.css'
+import "./ForecastTile.css";
 import _01d from "../../assets/weather-icons/01d.svg";
 import _01n from "../../assets/weather-icons/01n.svg";
 import _02d from "../../assets/weather-icons/02d.svg";
@@ -17,6 +17,7 @@ import _13d from "../../assets/weather-icons/13d.svg";
 import _13n from "../../assets/weather-icons/13n.svg";
 import _50d from "../../assets/weather-icons/50d.svg";
 import _50n from "../../assets/weather-icons/50n.svg";
+import {useEffect, useState} from "react";
 
 const iconPaths = {
     "01d": _01d,
@@ -40,14 +41,28 @@ const iconPaths = {
 };
 
 const ForecastTile = ({forecast}) => {
-    let iconSrc = iconPaths[forecast.weather[0].icon]
-  return (
-    <div className='forecast-tile'>
-        <span className='forecast-tile__temp'>{Math.round(forecast.main.temp)}°C</span>
-        <img className='forecast-tile__icon' src={iconSrc} alt="" />
-        <span className='forecast-tile__hs'>{forecast.dt_txt.slice(10, 16)}</span>
-    </div>
-  )
-}
+    let iconSrc = iconPaths[forecast.weather[0].icon];
+    let temperature = Math.round(forecast.main.temp);
+    let positiveBarHeight = Math.max(temperature, 0);
+    let negativeBarHeight = Math.max(-temperature, 0);
 
-export default ForecastTile
+    return (
+        <div className="forecast-tile">
+            <img className="forecast-tile__icon" src={iconSrc} alt="" />
+            <span className="forecast-tile__temp">
+                {temperature}°C
+            </span>
+            <div
+                className="forecast-tile__positive-bar"
+                style={{width: "60px", height: `${positiveBarHeight * 2}px`}}></div>
+            <div
+                className="forecast-tile__negative-bar"
+                style={{width: "60px", height: `${25 - negativeBarHeight / 2 }px`}}></div>
+            <span className="forecast-tile__hs">
+                {forecast.dt_txt.slice(10, 16)}
+            </span>
+        </div>
+    );
+};
+
+export default ForecastTile;

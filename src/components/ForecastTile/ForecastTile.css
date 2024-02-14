@@ -6,10 +6,18 @@
     margin: 0 1rem;
     color: var(--white);
     min-width: 60px;
-
 }
 
 .forecast-tile__icon {
     width: 20px;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
 }
+
+.forecast-tile__temp {
+    margin: 0.5rem 0;
+}
+
+.forecast-tile__positive-bar, .forecast-tile__negative-bar {
+    background: var(--white);
+}
+

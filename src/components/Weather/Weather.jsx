@@ -3,7 +3,7 @@ import CurrentWeather from "../CurrentWeather/CurrentWeather";
 import Next24hsForecast from "../Next24hsForecast/Next24hsForecast";
 import WindForecast from "../WindForecast/WindForecast";
 import temperature_icon from '../../assets/icons/thermometer.svg'
-import wind_2_icon from '../../assets/icons/wind_2.svg'
+import wind_icon from '../../assets/icons/wind.svg'
 
 const Weather = ({ currentWeatherData, forecastData }) => {
     return (
@@ -20,8 +20,8 @@ const Weather = ({ currentWeatherData, forecastData }) => {
                     <span>Temperatura</span>
                 </h4>
                 <Next24hsForecast forecastData={forecastData} />
-                <h4 className="weather-24hs-forecast-title">
-                    <img className="wind-icon" src={wind_2_icon} alt="" />
+                <h4 className="weather-24hs-forecast-title wind-title">
+                    <img className="wind-icon" src={wind_icon} alt="" />
                     <span>Viento</span>
                 </h4>
                 <WindForecast forecastData={forecastData} />
