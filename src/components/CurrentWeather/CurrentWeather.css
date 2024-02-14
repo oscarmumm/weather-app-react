@@ -78,6 +78,22 @@
     grid-column: 1 / 3;
 }
 
+.current__wind > .secondary-tile__title {
+    grid-column: 1 / 2;
+}
+
+.secondary-tile__data {
+    justify-self: end;
+    align-self: flex-end;
+    font-weight: normal;
+}
+
+.current__wind__wind-direction {
+    justify-self: flex-end;
+}
+
+
+
 .sunset-sunrise {
     grid-column: 1 / 3;
     display: grid;
