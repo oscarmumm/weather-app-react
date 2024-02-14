@@ -11,12 +11,16 @@
     align-items: center;
 }
 
+.weather-24hs-forecast-title__main {
+    font-size: 1.5rem;
+}
+
 .weather-details {
     background: rgba(0, 0, 0, .3);
 
 }
 
-.temperature-icon {
+.temperature-icon, .wind-icon {
     width: 25px;
     margin-right: 1rem;
 }
