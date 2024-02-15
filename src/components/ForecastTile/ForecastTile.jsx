@@ -43,8 +43,10 @@ const iconPaths = {
 const ForecastTile = ({forecast}) => {
     let iconSrc = iconPaths[forecast.weather[0].icon];
     let temperature = Math.round(forecast.main.temp);
-    let positiveBarHeight = Math.max(temperature, 0);
-    let negativeBarHeight = Math.max(-temperature, 0);
+    let positiveBarHeight = Math.max(temperature, 0) * 2;
+    let negativeBarHeight = temperature < 0 ? 50 - Math.abs(temperature) * 2 : 0;
+    // let negativeBarHeight = Math.max(-temperature, 0) * 2;
+    // let negativeBarHeight = Math.max(-temperature, 0);
 
     return (
         <div className="forecast-tile">
@@ -54,10 +56,10 @@ const ForecastTile = ({forecast}) => {
             </span>
             <div
                 className="forecast-tile__positive-bar"
-                style={{width: "60px", height: `${positiveBarHeight * 2}px`}}></div>
+                style={{width: "60px", height: `${positiveBarHeight}px`}}></div>
             <div
                 className="forecast-tile__negative-bar"
-                style={{width: "60px", height: `${25 - negativeBarHeight / 2 }px`}}></div>
+                style={{width: "60px", height: `${negativeBarHeight}px`}}></div>
             <span className="forecast-tile__hs">
                 {forecast.dt_txt.slice(10, 16)}
             </span>

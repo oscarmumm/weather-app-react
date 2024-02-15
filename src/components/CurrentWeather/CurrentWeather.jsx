@@ -67,6 +67,11 @@ const CurrentWeather = ({ currentWeatherData }) => {
         return `${hs}:${min}`;
     };
 
+    const currentWeatherTime = (timestamp) => {
+        let date = new Date(timestamp * 1000);
+        return date.toLocaleString().slice(0, -3)
+    }
+
     console.log(windDirection(10));
     return (
         <motion.div
@@ -75,6 +80,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
             animate="visible"
             className="current-weather"
         >
+            <span className="current__time">{currentWeatherTime(currentWeatherData.dt)}</span>
             <h2 className="current__location">{currentWeatherData.name}</h2>
             <div className="current__main-info">
                 <span className="current__temperature">
@@ -90,36 +96,36 @@ const CurrentWeather = ({ currentWeatherData }) => {
             </div>
             <div className="current__secondary-info">
                 <div className="secondary-tile current__humidity">
-                    <span className="secondary-tile__title">Humedad</span>
                     <img
                         className="secondary-icon"
                         src={humidity_icon}
                         alt=""
                     />
+                    <span className="secondary-tile__title">Humedad</span>
                     <span className="secondary-tile__data">{currentWeatherData.main.humidity}%</span>
                 </div>
                 <div className="secondary-tile current__pressure">
-                    <span className="secondary-tile__title">Presión</span>
                     <img
                         className="secondary-icon"
                         src={pressure_icon}
                         alt=""
                     />
+                    <span className="secondary-tile__title">Presión</span>
                     <span className="secondary-tile__data">{`${currentWeatherData.main.pressure} Hpa`}</span>
                 </div>
                 <div className="secondary-tile current__visibility">
-                    <span className="secondary-tile__title">Visibilidad</span>
                     <img
                         className="secondary-icon"
                         src={visibility_icon}
                         alt=""
                     />
+                    <span className="secondary-tile__title">Visibilidad</span>
                     <span className="secondary-tile__data">{`${currentWeatherData.visibility / 1000} Km`}</span>
                 </div>
                 <div className="secondary-tile current__wind">
+                    <img className="secondary-icon" src={wind_icon} alt="" />
                     <span className="secondary-tile__title">Viento</span>
                     <span className="current__wind__wind-direction">{windDirection(currentWeatherData.wind.deg)}</span>
-                    <img className="secondary-icon" src={wind_icon} alt="" />
                     <span className="secondary-tile__data">
                         {`${Math.round(
                             currentWeatherData.wind.speed * 3.6

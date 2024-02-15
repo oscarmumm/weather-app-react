@@ -4,10 +4,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     padding: 1rem;
     position: relative;
+}
 
+.current__time {
+    width: 100%;
+    text-align: end;
 }
 
 .current__location {
@@ -31,9 +35,8 @@
     width: 150px;
     grid-row: 1/4;
     grid-column: 2/3;
-    align-self:auto;
+    align-self: auto;
     justify-self: end;
-    
 }
 
 .current__temperature {
@@ -54,7 +57,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .secondary-icon {
@@ -63,36 +66,32 @@
 
 .secondary-tile {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 35px auto;
     padding: 1rem;
     font-weight: bold;
     border-radius: 20px;
-    background: rgba(255, 255, 255, .1);
+    background: rgba(0, 0, 0, .3);
+
+    /* background: rgba(255, 255, 255, 0.1); */
     font-size: 1.1rem;
-    
 }
 
 .secondary-tile__title {
     font-size: 1.2rem;
-    margin-bottom: .5rem;
-    grid-column: 1 / 3;
+    margin-bottom: 0.5rem;
+    justify-self: flex-end;
 }
 
-.current__wind > .secondary-tile__title {
-    grid-column: 1 / 2;
-}
 
 .secondary-tile__data {
     justify-self: end;
-    align-self: flex-end;
     font-weight: normal;
+    grid-column: 2 / 3;
 }
 
 .current__wind__wind-direction {
     justify-self: flex-end;
 }
-
-
 
 .sunset-sunrise {
     grid-column: 1 / 3;
@@ -105,7 +104,8 @@
     margin-bottom: 1rem;
 }
 
-.sunrise, .sunset {
+.sunrise,
+.sunset {
     display: flex;
     flex-direction: column;
 }
@@ -121,4 +121,49 @@
 .sunrise-icon {
     margin: auto;
     width: 35px;
+}
+
+@media (min-width: 576px) {
+    .current-weather {
+        width: 400px;
+    }
+    .current__time {
+        text-align: start;
+    }
+    .current__secondary-info {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 0;
+        /* background: rgba(255, 255, 255, 0.1); */
+    background: rgba(0, 0, 0, .3);
+
+        border-radius: 20px;
+        padding: 1rem;
+    }
+    .secondary-tile {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        background: none;
+    }
+    .secondary-tile__title {
+        margin: 0;
+    }
+    .secondary-icon {
+        width: 20px;
+    }
+    .secondary-tile__data {
+        position: absolute;
+        right: 2rem;
+    }
+    .current__wind__wind-direction {
+        margin-left: 6rem;
+    }
+    .secondary-tile__title {
+        font-size: 1rem;
+        margin: 0 1rem;
+    }
+    .sunset-sunrise {
+        display: grid;
+    }
 }
