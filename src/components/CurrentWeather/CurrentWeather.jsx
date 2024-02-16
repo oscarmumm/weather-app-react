@@ -60,13 +60,13 @@ const iconPaths = {
 const CurrentWeather = ({ currentWeatherData }) => {
     let iconSrc = iconPaths[currentWeatherData.weather[0].icon];
 
-    const timestampConverter = (timestamp) => {
-        let date = new Date(timestamp * 1000);
+    const timestampConverter = (timestamp, timezone) => {
+        let date = new Date((timestamp + timezone + 10800) * 1000);
         return date.toLocaleTimeString().slice(0, -3)
     };
 
-    const currentWeatherTime = (timestamp) => {
-        let date = new Date(timestamp * 1000);
+    const currentWeatherTime = (timestamp ,timezone) => {
+        let date = new Date((timestamp + timezone + 10800) * 1000);
         return date.toLocaleString().slice(0, -3)
     }
 
@@ -78,7 +78,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
             animate="visible"
             className="current-weather"
         >
-            <span className="current__time">{currentWeatherTime(currentWeatherData.dt)}</span>
+            <span className="current__time">{currentWeatherTime(currentWeatherData.dt, currentWeatherData.timezone)}</span>
             <h2 className="current__location">{currentWeatherData.name}</h2>
             <div className="current__main-info">
                 <span className="current__temperature">
@@ -137,14 +137,14 @@ const CurrentWeather = ({ currentWeatherData }) => {
                     <div className="sunrise">
                         <span>Salida del sol</span>
                         <span>
-                            {timestampConverter(currentWeatherData.sys.sunrise)}
+                            {timestampConverter(currentWeatherData.sys.sunrise, currentWeatherData.timezone)}
                         </span>
                     </div>
                     <img className="sunrise-icon" src={sunrise_icon} alt="" />
                     <div className="sunset">
                         <span>Puesta del sol</span>
                         <span>
-                            {timestampConverter(currentWeatherData.sys.sunset)}
+                            {timestampConverter(currentWeatherData.sys.sunset, currentWeatherData.timezone)}
                         </span>
                     </div>
                 </div>

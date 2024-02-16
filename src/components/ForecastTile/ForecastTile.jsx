@@ -40,28 +40,21 @@ const iconPaths = {
     "50n": _50n,
 };
 
-const ForecastTile = ({forecast}) => {
+const ForecastTile = ({forecast, currentWeatherData}) => {
     let iconSrc = iconPaths[forecast.weather[0].icon];
     let temperature = Math.round(forecast.main.temp);
-    let positiveBarHeight = Math.max(temperature, 0) * 2;
-    let negativeBarHeight = temperature < 0 ? 50 - Math.abs(temperature) * 2 : 0;
-    // let negativeBarHeight = Math.max(-temperature, 0) * 2;
-    // let negativeBarHeight = Math.max(-temperature, 0);
+
+    const forecastTime = (timestamp, timezone) => {
+        let date = new Date((timestamp + timezone + 10800) * 1000);
+        return date.toLocaleTimeString().slice(0, -3);
+    };
 
     return (
         <div className="forecast-tile">
             <img className="forecast-tile__icon" src={iconSrc} alt="" />
-            <span className="forecast-tile__temp">
-                {temperature}°C
-            </span>
-            <div
-                className="forecast-tile__positive-bar"
-                style={{width: "60px", height: `${positiveBarHeight}px`}}></div>
-            <div
-                className="forecast-tile__negative-bar"
-                style={{width: "60px", height: `${negativeBarHeight}px`}}></div>
+            <span className="forecast-tile__temp">{temperature}°C</span>
             <span className="forecast-tile__hs">
-                {forecast.dt_txt.slice(10, 16)}
+                {forecastTime(forecast.dt, currentWeatherData.timezone)}
             </span>
         </div>
     );
