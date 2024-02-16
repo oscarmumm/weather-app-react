@@ -62,9 +62,7 @@ const CurrentWeather = ({ currentWeatherData }) => {
 
     const timestampConverter = (timestamp) => {
         let date = new Date(timestamp * 1000);
-        let hs = date.getHours();
-        let min = date.getMinutes();
-        return `${hs}:${min}`;
+        return date.toLocaleTimeString().slice(0, -3)
     };
 
     const currentWeatherTime = (timestamp) => {
