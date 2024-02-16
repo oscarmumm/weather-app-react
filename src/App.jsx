@@ -36,24 +36,24 @@ function App() {
     const [forecastData, setForecastData] = useState([]);
 
     const fetchCurrentWeather = async (location) => {
-        console.log("fetching current weather data...");
+        // console.log("fetching current weather data...");
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${APIKEY}&units=metric&lang=es`
         );
         const data = await response.json();
-        console.log("current weather data:", data);
+        // console.log("current weather data:", data);
         setBackgroundGradient(bgSelector[data.weather[0].icon]);
         setCurrentWeatherData(data);
     };
 
     const fetchForecast = async (location) => {
-        console.log("fetching forecast...");
+        // console.log("fetching forecast...");
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&appid=${APIKEY}&units=metric&lang=es`
         );
         const data = await response.json();
-        console.log("forecast data:", data);
-        console.log("forecast 24hs data:", data.list);
+        // console.log("forecast data:", data);
+        // console.log("forecast 24hs data:", data.list);
         let temp = data.list;
         setForecastData(temp.slice(0, 8));
     };

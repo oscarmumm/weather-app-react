@@ -1,5 +1,6 @@
 import "./WindForecast.css";
 import {windDirection} from "../../helpers/WindDirection/WindDirection";
+import {motion} from 'framer-motion'
 
 const WindForecast = ({forecastData, currentWeatherData}) => {
     const forecastTime = (timestamp, timezone) => {
@@ -10,7 +11,7 @@ const WindForecast = ({forecastData, currentWeatherData}) => {
     return (
         <ul className="wind-forecast">
             {forecastData.map((el) => (
-                <li className="wind-forecast__tile">
+                <motion.li initial={{scale: 0}} animate={{scale: 1}} key={el.dt} className="wind-forecast__tile">
                     <span className="wind-forecast__tile__deg">
                         {windDirection(el.wind.deg)}
                     </span>
@@ -23,7 +24,7 @@ const WindForecast = ({forecastData, currentWeatherData}) => {
                             currentWeatherData.timezone
                         )}
                     </span>
-                </li>
+                </motion.li>
             ))}
         </ul>
     );

@@ -17,7 +17,7 @@ import _13d from "../../assets/weather-icons/13d.svg";
 import _13n from "../../assets/weather-icons/13n.svg";
 import _50d from "../../assets/weather-icons/50d.svg";
 import _50n from "../../assets/weather-icons/50n.svg";
-import {useEffect, useState} from "react";
+import {motion} from 'framer-motion'
 
 const iconPaths = {
     "01d": _01d,
@@ -50,13 +50,13 @@ const ForecastTile = ({forecast, currentWeatherData}) => {
     };
 
     return (
-        <div className="forecast-tile">
+        <motion.div initial={{scale: 0}} animate={{scale: 1}} className="forecast-tile">
             <img className="forecast-tile__icon" src={iconSrc} alt="" />
             <span className="forecast-tile__temp">{temperature}°C</span>
             <span className="forecast-tile__hs">
                 {forecastTime(forecast.dt, currentWeatherData.timezone)}
             </span>
-        </div>
+        </motion.div>
     );
 };
 

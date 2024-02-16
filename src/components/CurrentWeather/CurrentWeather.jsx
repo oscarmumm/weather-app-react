@@ -70,7 +70,6 @@ const CurrentWeather = ({ currentWeatherData }) => {
         return date.toLocaleString().slice(0, -3)
     }
 
-    console.log(windDirection(10));
     return (
         <motion.div
             variants={currentWeatherVariants}

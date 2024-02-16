@@ -6,7 +6,7 @@ const Next24hsForecast = ({forecastData, currentWeatherData}) => {
     <div className='next-24hs-forecast'>
         {
             forecastData.map((data) => (
-                <ForecastTile forecast={data} currentWeatherData={currentWeatherData} />
+                <ForecastTile key={data.dt} forecast={data} currentWeatherData={currentWeatherData} />
             ))
         }
     </div>

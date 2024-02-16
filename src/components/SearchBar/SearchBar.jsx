@@ -1,9 +1,9 @@
 import "./SearchBar.css";
 import search_icon from "../../assets/icons/search.svg";
-import {useEffect, useState} from "react";
-import {useDebounce} from "../../hooks/useDebounce";
-import {APIKEY} from "../../keys/apikey";
-import {motion} from "framer-motion";
+import { useEffect, useState } from "react";
+import { useDebounce } from "../../hooks/useDebounce";
+import { APIKEY } from "../../keys/apikey";
+import { motion } from "framer-motion";
 
 const liVariants = {
     hidden: {
@@ -11,10 +11,10 @@ const liVariants = {
     },
     visible: {
         y: 0,
-    }
+    },
 };
 
-const SearchBar = ({fetchWeather}) => {
+const SearchBar = ({ fetchWeather }) => {
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
     const debounceValue = useDebounce(search, 250);
@@ -25,7 +25,7 @@ const SearchBar = ({fetchWeather}) => {
                 `https://api.openweathermap.org/geo/1.0/direct?q=${debounceValue}&limit=10&appid=${APIKEY}`
             );
             const data = await response.json();
-            console.log("fetching data...");
+            // console.log("fetching data...");
             setResults(data);
         };
         search ? getData() : setResults([]);
@@ -54,19 +54,18 @@ const SearchBar = ({fetchWeather}) => {
                     }}
                 />
             </div>
-                <ul
-                    className="results-container">
-                    {results.map((el) => (
-                        <motion.li
+            <motion.ul initial={{opacity: 0, scale: 0}} animate={{opacity: 1, scale: 1}} className="results-container">
+                {results.map((el) => (
+                    <motion.li
+                    key={el.lat}
                         variants={liVariants}
-                    initial="hidden"
-                    animate="visible"
-                            className="result"
-                            onClick={() =>
-                                handleClick(el)
-                            }>{`${el.name}, ${el.country}`}</motion.li>
-                    ))}
-                </ul>
+                        initial="hidden"
+                        animate="visible"
+                        className="result"
+                        onClick={() => handleClick(el)}
+                    >{`${el.name}, ${el.country}`}</motion.li>
+                ))}
+            </motion.ul>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import Next24hsForecast from "../Next24hsForecast/Next24hsForecast";
 import WindForecast from "../WindForecast/WindForecast";
 import temperature_icon from "../../assets/icons/thermometer.svg";
 import wind_icon from "../../assets/icons/wind.svg";
+import {motion} from 'framer-motion'
 
 const Weather = ({currentWeatherData, forecastData}) => {
     return (
@@ -11,7 +12,7 @@ const Weather = ({currentWeatherData, forecastData}) => {
             <div className="weather-main">
                 <CurrentWeather currentWeatherData={currentWeatherData} />
             </div>
-            <div className="weather-details">
+            <motion.div className="weather-details" initial={{opacity: 0, y: 30}} animate={{opacity: 1, y: 0, transition: {duration: 2, type: 'spring', stiffness: 150}}}>
                 <h4 className="weather-24hs-forecast-title">
                     <span className="weather-24hs-forecast-title__main">
                         Próximas 24hs
@@ -34,7 +35,7 @@ const Weather = ({currentWeatherData, forecastData}) => {
                     forecastData={forecastData}
                     currentWeatherData={currentWeatherData}
                 />
-            </div>
+            </motion.div>
         </div>
     );
 };
