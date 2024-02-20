@@ -18,3 +18,12 @@
     color: var(--white);
     text-shadow: -4px 4px #000;
 }
+
+.home-bg {
+    position: fixed;
+    display: block;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
