@@ -1,8 +1,12 @@
-# React + Vite
+# Página del Clima
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Información general
+Esta web tiene como finalidad poner en práctica algunas habilidades aprendidas durante mis estudios.
+Utilizo la API de [openweathermap](https://openweathermap.org/api) para obtener los datos del clima en cualquier parte del mundo.
+Por un lado, los datos del clima actual, y por otro el pronóstico de los próximos 5 días en intervalos de 3hs, de los cuales utilizo solo las primeras 24hs.
+La versión gratuita de la API es limitada, como ejemplo, no es posible obtener las temperaturas máximas y mínimas pronosticadas.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tecnologías utilizadas
+* React JS
+* Framer motion
+* API de Openweathermap
