@@ -17,7 +17,7 @@ const homeVariants = {
 const Home = () => {
     return (
         <div className="home-view-container">
-            <img className="home-bg" src={home_bg} alt="" />
+            <motion.img initial={{opacity: 0}} animate={{opacity: 1}} className="home-bg" src={home_bg} alt="" />
             <motion.h1
                 variants={homeVariants}
                 initial="hidden"
